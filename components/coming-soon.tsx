@@ -6,7 +6,7 @@ export function ComingSoon({ title, description }: { title: string; description:
     <>
       <PageHeader title={title} description={description} />
       <Card>
-        <CardContent className="py-10 text-center text-sm text-muted-foreground">
+        <CardContent className="py-10 sm:py-10 text-center text-sm text-muted-foreground">
           This section is coming in a later phase.
         </CardContent>
       </Card>
