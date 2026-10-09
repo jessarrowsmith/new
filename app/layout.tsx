@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import "@fontsource-variable/source-serif-4";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { BottomNav, MobileHeader, Sidebar } from "@/components/nav";
@@ -18,7 +19,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className="font-sans antialiased">
+      <body className="antialiased">
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <Sidebar />
           <MobileHeader />
