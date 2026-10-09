@@ -64,6 +64,9 @@ create table if not exists week_plans (
   created_at timestamptz not null default now()
 );
 
+-- at most one working planner
+create unique index if not exists week_plans_one_current on week_plans ((is_template)) where is_template = false;
+
 -- day_of_week: 0 = Monday ... 6 = Sunday
 create table if not exists week_plan_days (
   id uuid primary key default gen_random_uuid(),

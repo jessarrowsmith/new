@@ -105,3 +105,6 @@ export interface ShoppingItem {
   category: string;
   checked: boolean;
 }
+
+export const DAY_NAMES = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+export type WeekPlanFull = WeekPlan & { week_plan_days: WeekPlanDay[] };
