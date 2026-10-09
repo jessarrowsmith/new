@@ -21,7 +21,9 @@ export function MacroSummary({
       {ITEMS.map(({ key, label, unit, color }) => (
         <div key={key}>
           <div className={cn("text-base font-semibold tabular-nums", color)}>
-            {Math.round(macros[key])}
+            {key === "calories"
+              ? Math.round(macros[key])
+              : Math.round(macros[key] * 10) / 10}
             {unit}
           </div>
           <div className="text-[11px] text-muted-foreground">{label}</div>
