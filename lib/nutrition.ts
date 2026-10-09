@@ -50,3 +50,10 @@ export function dayTotals(day: { day_template_meals: { servings: number; meals: 
     day.day_template_meals.map((m) => foodMacros(mealTotals(m.meals), m.servings)),
   );
 }
+
+/** Macros of one log entry: either a single food or a whole meal, times its servings. */
+export function entryMacros(e: { servings: number; foods: Macros | null; meals: MealLike | null }): Macros {
+  if (e.foods) return foodMacros(e.foods, e.servings);
+  if (e.meals) return foodMacros(mealTotals(e.meals), e.servings);
+  return ZERO_MACROS;
+}
