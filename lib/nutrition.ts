@@ -41,3 +41,12 @@ export const round = (n: number, dp = 1) => {
 export function mealTotals(meal: { meal_items: { servings: number; foods: Macros }[] }): Macros {
   return sumMacros(meal.meal_items.map((i) => foodMacros(i.foods, i.servings)));
 }
+
+type MealLike = { meal_items: { servings: number; foods: Macros }[] };
+
+/** Total macros of a day template: each meal's totals times its servings. */
+export function dayTotals(day: { day_template_meals: { servings: number; meals: MealLike }[] }): Macros {
+  return sumMacros(
+    day.day_template_meals.map((m) => foodMacros(mealTotals(m.meals), m.servings)),
+  );
+}

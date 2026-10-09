@@ -10,11 +10,13 @@ export function Dialog({
   onClose,
   title,
   children,
+  wide,
 }: {
   open: boolean;
   onClose: () => void;
   title: string;
   children: React.ReactNode;
+  wide?: boolean;
 }) {
   useEffect(() => {
     if (!open) return;
@@ -34,7 +36,7 @@ export function Dialog({
         role="dialog"
         aria-modal="true"
         aria-label={title}
-        className="flex max-h-[92dvh] w-full flex-col rounded-t-3xl bg-background shadow-xl sm:max-w-xl sm:rounded-3xl"
+        className={`flex max-h-[92dvh] w-full flex-col rounded-t-3xl bg-background shadow-xl sm:rounded-3xl ${wide ? "sm:max-w-2xl" : "sm:max-w-xl"}`}
       >
         <div className="flex items-center justify-between px-5 pb-2 pt-5">
           <h2 className="text-xl font-bold">{title}</h2>

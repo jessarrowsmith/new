@@ -13,6 +13,7 @@ import { Dialog } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { getSupabase, isSupabaseConfigured } from "@/lib/supabase";
 import { mealTotals, round } from "@/lib/nutrition";
+import { MEAL_SELECT } from "@/lib/queries";
 import { cn } from "@/lib/utils";
 import type { Food } from "@/lib/types";
 
@@ -30,7 +31,7 @@ export default function MealsPage() {
     if (!configured) return setLoading(false);
     const sb = getSupabase();
     const [m, f] = await Promise.all([
-      sb.from("meals").select("*, meal_items(id, meal_id, food_id, servings, foods(*))").order("name"),
+      sb.from("meals").select(MEAL_SELECT).order("name"),
       sb.from("foods").select("*").order("name"),
     ]);
     if (m.error || f.error) setError((m.error ?? f.error)!.message);

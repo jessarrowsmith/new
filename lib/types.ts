@@ -1,5 +1,11 @@
 export type Slot = "breakfast" | "lunch" | "dinner" | "snack";
 export const SLOTS: Slot[] = ["breakfast", "lunch", "dinner", "snack"];
+export const SLOT_META: Record<Slot, { label: string; emoji: string }> = {
+  breakfast: { label: "Breakfast", emoji: "🍳" },
+  lunch: { label: "Lunch", emoji: "🥗" },
+  dinner: { label: "Dinner", emoji: "🍝" },
+  snack: { label: "Snacks", emoji: "🍎" },
+};
 
 export interface Macros {
   calories: number;
