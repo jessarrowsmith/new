@@ -57,3 +57,17 @@ export function entryMacros(e: { servings: number; foods: Macros | null; meals: 
   if (e.meals) return foodMacros(mealTotals(e.meals), e.servings);
   return ZERO_MACROS;
 }
+
+/**
+ * A nutrition value after changing the serving size, keeping nutrition per gram/ml the same:
+ * 147 kcal in a 40 g serving is 183.8 kcal in a 50 g serving.
+ */
+export const scaleNutrition = (value: number, fromServing: number, toServing: number) =>
+  round((value * toServing) / fromServing, 1);
+
+/**
+ * Existing meals and log entries store "number of servings". When a food's serving size changes
+ * (keeping nutrition per gram the same), multiply those by old/new so the grams stay the same.
+ */
+export const rescaleServings = (servings: number, oldSize: number, newSize: number) =>
+  (servings * oldSize) / newSize;
