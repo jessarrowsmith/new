@@ -54,7 +54,7 @@ export async function POST(req: Request) {
             {
               type: "text",
               text:
-                "Read this nutrition label. Report values PER SERVING (not per 100g) unless only per-100g values are shown, in which case use a 100 g serving. Use g or ml for the serving unit. Calories are kcal, not kJ. Use 0 for any nutrient not listed.",
+                "Read this nutrition label. If the label shows a per-100g (or per-100ml) column, use that column: report serving_size as 100 and the values per 100 g (100 ml for liquids), even if a per-serving column is also shown. Only if the label has no per-100g column, use the per-serving column and report that serving size. Use g or ml for the serving unit. Calories are kcal, not kJ. Use 0 for any nutrient not listed.",
             },
           ],
         },
